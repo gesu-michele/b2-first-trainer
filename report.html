@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>B2 First FCE - Performance Report - Dr. Jesús Miguel Lima E.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'AnanthaSignature';
+      src: url('./Anantha Signature For Personal Use.ttf') format('truetype'),
+           url('./Anantha Signature For Personal Use.otf') format('opentype'),
+           url('./AnanthaSignature.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --bg-canvas: #040914;
+      --bg-panel: #0a1324;
+      --bg-card: #101d36;
+      --bg-card-inner: #070e1c;
+      --border-subtle: #1c2e4c;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --accent-gold: #d4af37;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --success-green: #10b981;
+      --warning-amber: #f59e0b;
+      --danger-red: #ef4444;
+      --shadow-deep: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 90% 10%, rgba(2, 132, 199, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 55%),
+        linear-gradient(to bottom, #030710, #081120);
+    }
+
+    .top-nav {
+      height: 58px;
+      background: rgba(6, 12, 23, 0.95);
+      border-bottom: 1px solid rgba(28, 46, 76, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent-blue-light); }
+
+    .nav-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 14px;
+    }
+
+    .nav-brand-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .coin-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--accent-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    .teacher-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-blue-light);
+      background: rgba(2, 132, 199, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 10px;
+      border-radius: 5px;
+    }
+
+    .main-layout {
+      flex: 1;
+      max-width: 1020px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 36px 20px 80px 20px;
+    }
+
+    .report-header {
+      margin-bottom: 28px;
+    }
+
+    .report-header-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .report-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(26px, 3vw, 36px);
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .report-subtitle {
+      font-size: 14.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .header-actions {
+      display: flex;
+      gap: 10px;
+    }
+
+    .btn-action {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 700;
+      padding: 8px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-print {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.4);
+      color: var(--accent-blue-light);
+    }
+
+    .btn-print:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    .btn-reset {
+      background: rgba(239, 68, 68, 0.12);
+      border-color: rgba(239, 68, 68, 0.4);
+      color: #f87171;
+    }
+
+    .btn-reset:hover {
+      background: var(--danger-red);
+      color: #ffffff;
+    }
+
+    /* KPI STAT CARDS */
+    .kpi-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+      margin-bottom: 30px;
+    }
+
+    .kpi-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow-deep);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .kpi-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 4px;
+      height: 100%;
+      background: var(--accent-blue-light);
+    }
+
+    .kpi-card.gold::after { background: var(--accent-gold); }
+    .kpi-card.green::after { background: var(--success-green); }
+
+    .kpi-label {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 8px;
+    }
+
+    .kpi-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffffff;
+      line-height: 1.1;
+      margin-bottom: 6px;
+    }
+
+    .kpi-sub {
+      font-size: 12px;
+      color: #cbd5e1;
+    }
+
+    /* DIAGNOSIS BLOCK */
+    .diagnosis-card {
+      background: linear-gradient(135deg, rgba(16, 29, 54, 0.95) 0%, rgba(8, 16, 31, 0.95) 100%);
+      border: 1.5px solid var(--border-gold);
+      border-radius: 14px;
+      padding: 24px 28px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow-deep);
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+    }
+
+    .diagnosis-icon {
+      font-size: 40px;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+
+    .diagnosis-body h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--accent-gold);
+      margin-bottom: 6px;
+    }
+
+    .diagnosis-body p {
+      font-size: 13.5px;
+      color: #e2e8f0;
+      line-height: 1.6;
+    }
+
+    /* DETAILED TABLE */
+    .table-section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 19px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .table-wrapper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: var(--shadow-deep);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      text-align: left;
+      font-size: 13.5px;
+    }
+
+    thead th {
+      background: #070e1c;
+      padding: 14px 18px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--accent-blue-light);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    tbody tr {
+      border-bottom: 1px solid rgba(28, 46, 76, 0.5);
+      transition: background 0.15s;
+    }
+
+    tbody tr:last-child {
+      border-bottom: none;
+    }
+
+    tbody tr:hover {
+      background: rgba(2, 132, 199, 0.05);
+    }
+
+    td {
+      padding: 13px 18px;
+      color: #e2e8f0;
+      vertical-align: middle;
+    }
+
+    .block-cell-title {
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .block-cell-sub {
+      font-size: 11px;
+      color: var(--text-muted);
+      font-family: 'JetBrains Mono', monospace;
+      margin-top: 2px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 8px;
+      border-radius: 4px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 10.5px;
+      font-weight: 800;
+      text-transform: uppercase;
+    }
+
+    .status-completed {
+      background: rgba(16, 185, 129, 0.14);
+      color: var(--success-green);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+    }
+
+    .status-pending {
+      background: rgba(148, 163, 184, 0.1);
+      color: var(--text-muted);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+    }
+
+    .score-pill {
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 12.5px;
+    }
+
+    .btn-goto {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-blue-light);
+      text-decoration: none;
+      padding: 4px 10px;
+      border-radius: 4px;
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      transition: all 0.2s;
+      display: inline-block;
+    }
+
+    .btn-goto:hover {
+      background: var(--accent-blue);
+      color: #ffffff;
+    }
+
+    .institutional-bottom {
+      padding: 12px 36px;
+      background: #03060d;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: auto;
+    }
+
+    @media print {
+      body {
+        background: #ffffff !important;
+        color: #000000 !important;
+      }
+      .top-nav, .header-actions, .btn-goto, .institutional-bottom {
+        display: none !important;
+      }
+      .main-layout {
+        max-width: 100% !important;
+        padding: 0 !important;
+      }
+      .table-wrapper, .kpi-card, .diagnosis-card {
+        border: 1px solid #ccc !important;
+        background: #ffffff !important;
+        color: #000 !important;
+        box-shadow: none !important;
+      }
+      .report-title, .kpi-value, .block-cell-title {
+        color: #000000 !important;
+      }
+      td, .kpi-sub, .diagnosis-body p {
+        color: #333333 !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-nav">
+    <div class="nav-brand-left">
+      <a href="./index.html" class="back-link">&larr; Roadmap Hub</a>
+      <span class="nav-title">Global Teacher Performance Summary</span>
+    </div>
+
+    <div class="nav-brand-right">
+      <div class="coin-display">
+        <span>🪙</span> <span id="navCoins">100</span>
+      </div>
+      <div class="teacher-badge" id="navTeacherName">Teacher</div>
+    </div>
+  </div>
+
+  <main class="main-layout">
+
+    <div class="report-header">
+      <div class="report-header-top">
+        <div>
+          <h1 class="report-title">Cambridge B2 First &bull; Progress & Analytics</h1>
+          <p class="report-subtitle">Personal Diagnostic Report for Teacher <strong id="teacherNameDisplay" style="color:var(--accent-gold);">Colleague</strong></p>
+        </div>
+        <div class="header-actions">
+          <button type="button" class="btn-action btn-print" onclick="window.print()">
+            <span>🖨️</span> Print / Save PDF
+          </button>
+          <button type="button" class="btn-action btn-reset" onclick="resetProgress()">
+            <span>🔄</span> Reset Circuit
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4 KPIS -->
+    <div class="kpi-grid">
+      <div class="kpi-card">
+        <div class="kpi-label">Circuit Progress</div>
+        <div class="kpi-value" id="kpiProgress">0 / 18</div>
+        <div class="kpi-sub" id="kpiProgressPct">0% Completed</div>
+      </div>
+
+      <div class="kpi-card gold">
+        <div class="kpi-label">Part 1 (Lexical Accuracy)</div>
+        <div class="kpi-value" id="kpiP1Pct">0%</div>
+        <div class="kpi-sub" id="kpiP1Sub">0 / 0 points</div>
+      </div>
+
+      <div class="kpi-card green">
+        <div class="kpi-label">Part 2 (Syntax & Grammar)</div>
+        <div class="kpi-value" id="kpiP2Pct">0%</div>
+        <div class="kpi-sub" id="kpiP2Sub">0 / 0 points</div>
+      </div>
+
+      <div class="kpi-card">
+        <div class="kpi-label">Current Coin Balance</div>
+        <div class="kpi-value" id="kpiCoins">100 🪙</div>
+        <div class="kpi-sub">Reward & lifeline reserve</div>
+      </div>
+    </div>
+
+    <!-- QUALITATIVE DIAGNOSIS -->
+    <div class="diagnosis-card">
+      <div class="diagnosis-icon">💡</div>
+      <div class="diagnosis-body">
+        <h3 id="diagTitle">Pedagogical Assessment & Diagnostic</h3>
+        <p id="diagText">Start practicing the official Cambridge training blocks to generate your linguistic breakdown.</p>
+      </div>
+    </div>
+
+    <!-- 18 BLOCKS BREAKDOWN TABLE -->
+    <div class="table-section-title">
+      <span>📋</span> 18-Block Detailed Audit
+    </div>
+
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 80px;">Block</th>
+            <th>Exam Texts & Topic Focus</th>
+            <th style="width: 110px; text-align:center;">Part 1 (/8)</th>
+            <th style="width: 110px; text-align:center;">Part 2 (/8)</th>
+            <th style="width: 110px; text-align:center;">Total (/16)</th>
+            <th style="width: 130px; text-align:center;">Status</th>
+            <th style="width: 110px; text-align:right;">Action</th>
+          </tr>
+        </thead>
+        <tbody id="blocksTableBody"></tbody>
+      </table>
+    </div>
+
+  </main>
+
+  <div class="institutional-bottom">
+    <span>B2 First FCE: Complete 18-Block Diagnostics System</span>
+    <span>All Rights Reserved &copy; by <strong>Dr. Jesús Miguel Lima E.</strong> &bull; JM ELT Solutions</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "fce_trainer_session_v1";
+
+    const BLOCKS_CONFIG = [
+      { id: 1, title: "Checking your mobile phone / The Australian city of Perth", file: "BLOCK 01.html" },
+      { id: 2, title: "Pets can improve your life / Eating at university", file: "BLOCK 02.html" },
+      { id: 3, title: "Mars on Earth / Marathon in the mountains", file: "BLOCK 03.html" },
+      { id: 4, title: "Teenagers really do need more sleep / Music really can reduce that pain", file: "BLOCK 04.html" },
+      { id: 5, title: "Working parents / Daniela: Skateboard champion", file: "BLOCK 05.html" },
+      { id: 6, title: "Going on a diet / I'm not superstitious, honestly!", file: "BLOCK 06.html" },
+      { id: 7, title: "Vinyl attraction / Agriculture in ancient Britain", file: "BLOCK 07.html" },
+      { id: 8, title: "School lunch / History and storytelling", file: "BLOCK 08.html" },
+      { id: 9, title: "A powerful influence / Driving blind", file: "BLOCK 09.html" },
+      { id: 10, title: "Old and active / Acoustic archaeology", file: "BLOCK 10.html" },
+      { id: 11, title: "The bobcat / The origin of our language", file: "BLOCK 11.html" },
+      { id: 12, title: "The old gate / Learning the language", file: "BLOCK 12.html" },
+      { id: 13, title: "Messages from the Stone Age / Swimming with seals", file: "BLOCK 13.html" },
+      { id: 14, title: "Where to go whale watching / The Mini-Monet", file: "BLOCK 14.html" },
+      { id: 15, title: "The Gesture Interface / Choosing the best shades", file: "BLOCK 15.html" },
+      { id: 16, title: "Slacklining / Blanca Huertas: butterfly expert", file: "BLOCK 16.html" },
+      { id: 17, title: "Vera Neumann: fabric designer / Tree-climbing", file: "BLOCK 17.html" },
+      { id: 18, title: "What is a coincidence? / The Recyclists", file: "BLOCK 18.html" }
+    ];
+
+    let session = {
+      firstName: "Teacher",
+      birthYear: "",
+      coins: 100,
+      unlockedBlocks: [1],
+      blockScores: {}
+    };
+
+    function loadData() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        try {
+          session = JSON.parse(raw);
+          if (!session.unlockedBlocks) session.unlockedBlocks = [1];
+          if (session.coins === undefined) session.coins = 100;
+          if (!session.blockScores) session.blockScores = {};
+        } catch(e) { console.error(e); }
+      }
+
+      document.getElementById("navCoins").innerText = session.coins;
+      document.getElementById("kpiCoins").innerText = session.coins + " 🪙";
+      const teacherName = session.firstName || "Colleague";
+      document.getElementById("navTeacherName").innerText = teacherName;
+      document.getElementById("teacherNameDisplay").innerText = teacherName;
+
+      calculateAndRender();
+    }
+
+    function calculateAndRender() {
+      let completedCount = 0;
+      let totalP1Score = 0;
+      let totalP2Score = 0;
+      let totalP1Max = 0;
+      let totalP2Max = 0;
+
+      const tbody = document.getElementById("blocksTableBody");
+      tbody.innerHTML = "";
+
+      BLOCKS_CONFIG.forEach(b => {
+        const record = session.blockScores[b.id];
+        const isDone = record && record.completed;
+        const isUnlocked = session.unlockedBlocks.includes(b.id);
+
+        if (isDone) {
+          completedCount++;
+          totalP1Score += (record.p1 || 0);
+          totalP2Score += (record.p2 || 0);
+          totalP1Max += 8;
+          totalP2Max += 8;
+        }
+
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td style="font-family:'JetBrains Mono'; font-weight:800; color:var(--accent-gold);">
+            #${String(b.id).padStart(2, '0')}
+          </td>
+          <td>
+            <div class="block-cell-title">Block ${String(b.id).padStart(2, '0')}: ${b.title.split('/')[0]}</div>
+            <div class="block-cell-sub">${b.file} &bull; Parts 1 & 2</div>
+          </td>
+          <td style="text-align:center;">
+            <span class="score-pill" style="color:${isDone ? 'var(--accent-blue-light)' : 'var(--text-muted)'};">
+              ${isDone ? (record.p1 + ' / 8') : '—'}
+            </span>
+          </td>
+          <td style="text-align:center;">
+            <span class="score-pill" style="color:${isDone ? 'var(--success-green)' : 'var(--text-muted)'};">
+              ${isDone ? (record.p2 + ' / 8') : '—'}
+            </span>
+          </td>
+          <td style="text-align:center;">
+            <span class="score-pill" style="color:${isDone ? '#ffffff' : 'var(--text-muted)'}; font-weight:800;">
+              ${isDone ? ((record.p1 + record.p2) + ' / 16') : '—'}
+            </span>
+          </td>
+          <td style="text-align:center;">
+            <span class="status-badge ${isDone ? 'status-completed' : 'status-pending'}">
+              ${isDone ? 'Completed ✓' : (isUnlocked ? 'Available' : 'Locked 🔒')}
+            </span>
+          </td>
+          <td style="text-align:right;">
+            ${isUnlocked ? `<a href="./${encodeURI(b.file)}" class="btn-goto">Open &rarr;</a>` : `<span style="font-size:12px; color:var(--text-muted);">—</span>`}
+          </td>
+        `;
+        tbody.appendChild(tr);
+      });
+
+      // Update KPIs
+      const progressPct = Math.round((completedCount / 18) * 100);
+      document.getElementById("kpiProgress").innerText = `${completedCount} / 18`;
+      document.getElementById("kpiProgressPct").innerText = `${progressPct}% Circuit Completed`;
+
+      const p1Pct = totalP1Max > 0 ? Math.round((totalP1Score / totalP1Max) * 100) : 0;
+      document.getElementById("kpiP1Pct").innerText = `${p1Pct}%`;
+      document.getElementById("kpiP1Sub").innerText = `${totalP1Score} / ${totalP1Max} points`;
+
+      const p2Pct = totalP2Max > 0 ? Math.round((totalP2Score / totalP2Max) * 100) : 0;
+      document.getElementById("kpiP2Pct").innerText = `${p2Pct}%`;
+      document.getElementById("kpiP2Sub").innerText = `${totalP2Score} / ${totalP2Max} points`;
+
+      // Update Qualitative Diagnostic
+      const diagTitle = document.getElementById("diagTitle");
+      const diagText = document.getElementById("diagText");
+
+      if (completedCount === 0) {
+        diagTitle.innerText = "Training Session Initialized";
+        diagText.innerText = "No blocks completed yet. Complete Block 01 to unlock the first set of comparative linguistic metrics.";
+      } else if (completedCount < 18) {
+        diagTitle.innerText = `Active Progression &bull; ${completedCount} of 18 Blocks Evaluated`;
+        if (p1Pct >= 75 && p2Pct >= 75) {
+          diagText.innerText = `Outstanding balanced accuracy across both competencies. Lexical selection (collocations and phrasal verbs) is at ${p1Pct}%, while open-cloze syntax control sits at ${p2Pct}%. Keep up this consistent rhythm through the remaining ${18 - completedCount} blocks!`;
+        } else if (p1Pct > p2Pct) {
+          diagText.innerText = `Strong vocabulary and collocational recognition (${p1Pct}% in Part 1). However, grammatical precision in Part 2 is currently at ${p2Pct}%. Pay special attention to relative clauses, auxiliary verbs, and dependent prepositions in upcoming gaps.`;
+        } else {
+          diagText.innerText = `Solid syntactic mastery (${p2Pct}% in Part 2). Part 1 is averaging ${p1Pct}%. Focus on nuance between near-synonyms, dependent prepositions, and idiomatic set phrases.`;
+        }
+      } else {
+        diagTitle.innerText = "Grand 18-Block Circuit Mastered!";
+        const overallPct = Math.round(((totalP1Score + totalP2Score) / (totalP1Max + totalP2Max)) * 100);
+        diagText.innerText = `Congratulations, Teacher ${session.firstName}! You have finalized all 18 official Cambridge training blocks with an overall score of ${overallPct}% (${totalP1Score + totalP2Score} / 288 points). Your preparation demonstrates solid pedagogical readiness for the Cambridge B2 First examination.`;
+      }
+    }
+
+    function resetProgress() {
+      if (confirm("Are you sure you want to reset your score history and block progress? Your coin balance will revert to 100.")) {
+        session.unlockedBlocks = [1];
+        session.coins = 100;
+        session.blockScores = {};
+        session.completedAllBlocks = false;
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+        loadData();
+      }
+    }
+
+    loadData();
+  </script>
+</body>
+</html>

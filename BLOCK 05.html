@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cambridge B2 First - Block 05 - Dr. Jesús Miguel Lima E.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @font-face {
+      font-family: 'AnanthaSignature';
+      src: url('./Anantha Signature For Personal Use.ttf') format('truetype'),
+           url('./Anantha Signature For Personal Use.otf') format('opentype'),
+           url('./AnanthaSignature.ttf') format('truetype');
+      font-weight: normal;
+      font-style: normal;
+    }
+
+    :root {
+      --bg-canvas: #040914;
+      --bg-panel: #0a1324;
+      --bg-card: #101d36;
+      --bg-card-inner: #070e1c;
+      --border-subtle: #1c2e4c;
+      --border-gold: rgba(212, 175, 55, 0.4);
+      --accent-gold: #d4af37;
+      --accent-blue: #0284c7;
+      --accent-blue-light: #38bdf8;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --success-green: #10b981;
+      --danger-red: #ef4444;
+      --shadow-deep: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-canvas);
+      color: var(--text-main);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      background-image: 
+        radial-gradient(circle at 90% 10%, rgba(2, 132, 199, 0.14) 0%, transparent 55%),
+        radial-gradient(circle at 10% 90%, rgba(212, 175, 55, 0.08) 0%, transparent 55%),
+        linear-gradient(to bottom, #030710, #081120);
+    }
+
+    .top-nav {
+      height: 58px;
+      background: rgba(6, 12, 23, 0.95);
+      border-bottom: 1px solid rgba(28, 46, 76, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 36px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    .nav-brand-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .back-link {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s;
+    }
+
+    .back-link:hover { color: var(--accent-blue-light); }
+
+    .nav-title {
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-main);
+      letter-spacing: 0.5px;
+      border-left: 1px solid var(--border-subtle);
+      padding-left: 14px;
+    }
+
+    .nav-brand-right {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .coin-display {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(212, 175, 55, 0.12);
+      border: 1px solid var(--accent-gold);
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-gold);
+    }
+
+    .teacher-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--accent-blue-light);
+      background: rgba(2, 132, 199, 0.14);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      padding: 4px 10px;
+      border-radius: 5px;
+    }
+
+    .main-layout {
+      flex: 1;
+      max-width: 940px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 32px 20px 80px 20px;
+    }
+
+    .section-stage {
+      display: none;
+      animation: fadeIn 0.3s ease-in-out forwards;
+    }
+
+    .section-stage.active { display: block; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(8px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .cambridge-header {
+      border-bottom: 2px solid var(--border-subtle);
+      padding-bottom: 16px;
+      margin-bottom: 20px;
+    }
+
+    .cambridge-title-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 12px;
+    }
+
+    .cambridge-part-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 24px;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+    }
+
+    .cambridge-instructions {
+      font-size: 14px;
+      color: #cbd5e1;
+      line-height: 1.6;
+      margin-bottom: 14px;
+    }
+
+    .example-box {
+      background: var(--bg-panel);
+      border: 1px solid var(--border-subtle);
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      font-size: 13.5px;
+    }
+
+    .example-options {
+      display: flex;
+      gap: 24px;
+      font-family: 'JetBrains Mono', monospace;
+      color: #e2e8f0;
+      flex-wrap: wrap;
+    }
+
+    .example-grid {
+      display: inline-flex;
+      border: 1px solid #334155;
+      background: #060d1b;
+      padding: 4px 8px;
+      border-radius: 4px;
+      gap: 12px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12px;
+      width: fit-content;
+    }
+
+    .example-grid .key-selected {
+      background: var(--accent-gold);
+      color: #000;
+      padding: 0 4px;
+      font-weight: 800;
+      border-radius: 2px;
+    }
+
+    .lifeline-control-panel {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+      background: rgba(10, 19, 36, 0.9);
+      border: 1px solid var(--border-gold);
+      border-radius: 10px;
+      padding: 12px 18px;
+      margin-bottom: 20px;
+    }
+
+    .lifeline-group {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .lifeline-select {
+      background: var(--bg-card-inner);
+      border: 1px solid var(--border-subtle);
+      color: var(--text-main);
+      padding: 6px 12px;
+      border-radius: 6px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .btn-apply-lifeline {
+      background: rgba(212, 175, 55, 0.15);
+      border: 1px solid var(--accent-gold);
+      color: var(--accent-gold);
+      font-family: 'JetBrains Mono', monospace;
+      font-weight: 700;
+      font-size: 12px;
+      padding: 7px 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-apply-lifeline:hover {
+      background: var(--accent-gold);
+      color: #000;
+    }
+
+    .exam-paper {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      padding: 32px 36px;
+      box-shadow: var(--shadow-deep);
+      line-height: 2.2;
+      font-size: 16px;
+      color: #e2e8f0;
+    }
+
+    .exam-paper-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--accent-blue-light);
+      text-align: center;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .gap-select {
+      background: var(--bg-card-inner);
+      color: var(--accent-gold);
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 5px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13.5px;
+      font-weight: 700;
+      outline: none;
+      cursor: pointer;
+      margin: 0 4px;
+      transition: border-color 0.2s, background-color 0.2s;
+    }
+
+    .gap-select:focus {
+      border-color: var(--accent-blue-light);
+      background: #0a1930;
+    }
+
+    .gap-input {
+      background: var(--bg-card-inner);
+      color: #ffffff;
+      border: 1.5px solid var(--border-subtle);
+      border-radius: 6px;
+      padding: 4px 8px;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      outline: none;
+      width: 130px;
+      text-align: center;
+      margin: 0 4px;
+      transition: border-color 0.2s;
+    }
+
+    .gap-input:focus {
+      border-color: var(--accent-blue-light);
+    }
+
+    .action-row {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 24px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      border: 1px solid rgba(56, 189, 248, 0.5);
+      padding: 12px 26px;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, #38bdf8 0%, #0284c7 100%);
+      transform: translateY(-2px);
+    }
+
+    .feedback-stage {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .feedback-stage.active { display: block; }
+
+    .celebration-box {
+      background: linear-gradient(135deg, rgba(16, 29, 54, 0.95) 0%, rgba(8, 16, 31, 0.95) 100%);
+      border: 1.5px solid var(--accent-gold);
+      border-radius: 12px;
+      padding: 20px 24px;
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .feedback-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .item-card {
+      background: var(--bg-card);
+      border-radius: 8px;
+      padding: 16px 20px;
+      border-left: 4px solid var(--border-subtle);
+    }
+
+    .item-card.correct { border-left-color: var(--success-green); }
+    .item-card.incorrect { border-left-color: var(--danger-red); }
+
+    .item-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+    }
+
+    .item-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--accent-blue-light);
+    }
+
+    .item-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      font-weight: 800;
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .badge-pass { background: rgba(16, 185, 129, 0.15); color: var(--success-green); }
+    .badge-fail { background: rgba(239, 68, 68, 0.15); color: var(--danger-red); }
+
+    .item-explanation {
+      font-size: 13px;
+      color: #94a3b8;
+      line-height: 1.55;
+      border-top: 1px dashed var(--border-subtle);
+      padding-top: 8px;
+      margin-top: 8px;
+    }
+
+    .item-explanation strong { color: #e2e8f0; }
+
+    .institutional-bottom {
+      padding: 12px 36px;
+      background: #03060d;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11px;
+      color: #64748b;
+      margin-top: auto;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-nav">
+    <div class="nav-brand-left">
+      <a href="./index.html" class="back-link">&larr; Roadmap Hub</a>
+      <span class="nav-title">Block 05: Practice & Guided Feedback</span>
+    </div>
+
+    <div class="nav-brand-right">
+      <div class="coin-display">
+        <span>🪙</span> <span id="navCoins">100</span>
+      </div>
+      <div class="teacher-badge" id="navTeacherName">Teacher</div>
+    </div>
+  </div>
+
+  <main class="main-layout">
+
+    <!-- ========================================== -->
+    <!-- SECTION 1: CAMBRIDGE PART 1                -->
+    <!-- ========================================== -->
+    <section id="part1-container" class="section-stage active">
+      
+      <div class="cambridge-header">
+        <div class="cambridge-title-row">
+          <h1 class="cambridge-part-title">Reading and Use of English &bull; Part 1</h1>
+        </div>
+        <p class="cambridge-instructions">
+          For questions <strong>1–8</strong>, read the text below and decide which answer (<strong>A</strong>, <strong>B</strong>, <strong>C</strong> or <strong>D</strong>) best fits each gap. There is an example at the beginning (<strong>0</strong>).
+        </p>
+
+        <div class="example-box">
+          <div style="font-weight: 700; color: #94a3b8;">Example:</div>
+          <div class="example-options">
+            <span><strong>0</strong></span>
+            <span><strong>A</strong> idea</span>
+            <span><strong>B</strong> view</span>
+            <span><strong>C</strong> thought</span>
+            <span><strong>D</strong> decision</span>
+          </div>
+          <div class="example-grid">
+            <span>0</span>
+            <span>A</span>
+            <span class="key-selected">B</span>
+            <span>C</span>
+            <span>D</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIFELINE PANEL: 50/50 WITH TARGET SELECTION -->
+      <div class="lifeline-control-panel">
+        <div class="lifeline-group">
+          <span style="color: var(--accent-gold); font-weight: 700; font-size: 13px;">🪙 50/50 Lifeline (Cost: 20 Coins):</span>
+          <select id="p1-target-gap" class="lifeline-select">
+            <option value="">-- Choose Gap (1–8) --</option>
+            <option value="1">Gap 1</option>
+            <option value="2">Gap 2</option>
+            <option value="3">Gap 3</option>
+            <option value="4">Gap 4</option>
+            <option value="5">Gap 5</option>
+            <option value="6">Gap 6</option>
+            <option value="7">Gap 7</option>
+            <option value="8">Gap 8</option>
+          </select>
+        </div>
+        <button type="button" class="btn-apply-lifeline" onclick="executeFiftyFifty()">Apply 50/50 to Gap</button>
+      </div>
+
+      <div class="exam-paper">
+        <div class="exam-paper-title">Working parents</div>
+        
+        <p>
+          Reliable studies have shown that children of parents who both go out to work have no more problems than children with one parent staying at home. My personal <strong>(0) view</strong> is that both parents should go out to work if they wish.
+        </p>
+
+        <p style="margin-top: 14px;">
+          Some parents invest so much in a career that they cannot 
+          <strong>(1)</strong>
+          <select class="gap-select" id="q1">
+            <option value="">Choose [1]...</option>
+            <option value="A">A) bear</option>
+            <option value="B">B) decide</option>
+            <option value="C">C) hope</option>
+            <option value="D">D) expect</option>
+          </select>
+          to give it up. Others have to work because of economic 
+          <strong>(2)</strong>
+          <select class="gap-select" id="q2">
+            <option value="">Choose [2]...</option>
+            <option value="A">A) reason</option>
+            <option value="B">B) duty</option>
+            <option value="C">C) necessity</option>
+            <option value="D">D) task</option>
+          </select>
+          .
+        </p>
+
+        <p style="margin-top: 14px;">
+          There are several options when it 
+          <strong>(3)</strong>
+          <select class="gap-select" id="q3">
+            <option value="">Choose [3]...</option>
+            <option value="A">A) refers</option>
+            <option value="B">B) concerns</option>
+            <option value="C">C) turns</option>
+            <option value="D">D) comes</option>
+          </select>
+          to choosing childcare from child minders to the kind neighbour 
+          <strong>(4)</strong>
+          <select class="gap-select" id="q4">
+            <option value="">Choose [4]...</option>
+            <option value="A">A) of</option>
+            <option value="B">B) opposite</option>
+            <option value="C">C) across</option>
+            <option value="D">D) next to</option>
+          </select>
+          the street.
+        </p>
+
+        <p style="margin-top: 14px;">
+          No 
+          <strong>(5)</strong>
+          <select class="gap-select" id="q5">
+            <option value="">Choose [5]...</option>
+            <option value="A">A) way</option>
+            <option value="B">B) matter</option>
+            <option value="C">C) surprise</option>
+            <option value="D">D) exception</option>
+          </select>
+          how good the childcare may be, some children protest if their parents aren't around. Babies become dependent on parents and close family 
+          <strong>(6)</strong>
+          <select class="gap-select" id="q6">
+            <option value="">Choose [6]...</option>
+            <option value="A">A) people</option>
+            <option value="B">B) adults</option>
+            <option value="C">C) members</option>
+            <option value="D">D) grown-ups</option>
+          </select>
+          , so parents should make sure they allow 
+          <strong>(7)</strong>
+          <select class="gap-select" id="q7">
+            <option value="">Choose [7]...</option>
+            <option value="A">A) little</option>
+            <option value="B">B) no</option>
+            <option value="C">C) lots</option>
+            <option value="D">D) plenty of</option>
+          </select>
+          time to help their child settle in with their new carer.
+        </p>
+
+        <p style="margin-top: 14px;">
+          Remember: if parents want to 
+          <strong>(8)</strong>
+          <select class="gap-select" id="q8">
+            <option value="">Choose [8]...</option>
+            <option value="A">A) make</option>
+            <option value="B">B) give</option>
+            <option value="C">C) have</option>
+            <option value="D">D) do</option>
+          </select>
+          the best for their children, it's not the quantity of time they spend with them, it's the quality that matters.
+        </p>
+      </div>
+
+      <div class="action-row" id="p1-action-row">
+        <button type="button" class="btn-primary" onclick="submitPart1()">
+          <span>🔍</span> Check Answers & View Feedback ➔
+        </button>
+      </div>
+
+      <!-- FEEDBACK VIEW FOR PART 1 -->
+      <div class="feedback-stage" id="p1-feedback-stage">
+        <div class="celebration-box">
+          <div style="font-size: 36px;">📎</div>
+          <div>
+            <h4 id="p1-celeb-title" style="color: var(--accent-gold); font-size: 17px; margin-bottom: 4px;">Analysis Completed</h4>
+            <p id="p1-celeb-desc" style="font-size: 13.5px; color: #cbd5e1;">Review the syntactic and collocational breakdown for every option below.</p>
+          </div>
+        </div>
+
+        <div class="feedback-grid" id="p1-feedback-list"></div>
+
+        <div class="action-row">
+          <button type="button" class="btn-primary" onclick="transitionToPart2()">
+            <span>👉</span> Proceed to Part 2: Open Cloze ➔
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ========================================== -->
+    <!-- SECTION 2: CAMBRIDGE PART 2                -->
+    <!-- ========================================== -->
+    <section id="part2-container" class="section-stage">
+      
+      <div class="cambridge-header">
+        <div class="cambridge-title-row">
+          <h1 class="cambridge-part-title">Reading and Use of English &bull; Part 2</h1>
+        </div>
+        <p class="cambridge-instructions">
+          For questions <strong>9–16</strong>, read the text below and think of the word which best fits each gap. Use <strong>only one word</strong> in each gap. There is an example at the beginning (<strong>0</strong>). Write your answers in <strong>CAPITAL LETTERS</strong>.
+        </p>
+
+        <div class="example-box">
+          <div style="font-weight: 700; color: #94a3b8;">Example:</div>
+          <div class="example-grid">
+            <span>0</span>
+            <span class="key-selected">B</span>
+            <span class="key-selected">E</span>
+            <span class="key-selected">E</span>
+            <span class="key-selected">N</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- LIFELINE PANEL: LETTER HINTS WITH TARGET SELECTION -->
+      <div class="lifeline-control-panel">
+        <div class="lifeline-group">
+          <span style="color: var(--accent-gold); font-weight: 700; font-size: 13px;">💡 Letter Hint (Cost: 10 Coins / letter):</span>
+          <select id="p2-target-gap" class="lifeline-select">
+            <option value="">-- Choose Gap (9–16) --</option>
+            <option value="9">Gap 9</option>
+            <option value="10">Gap 10</option>
+            <option value="11">Gap 11</option>
+            <option value="12">Gap 12</option>
+            <option value="13">Gap 13</option>
+            <option value="14">Gap 14</option>
+            <option value="15">Gap 15</option>
+            <option value="16">Gap 16</option>
+          </select>
+        </div>
+        <button type="button" class="btn-apply-lifeline" onclick="executeLetterHint()">Reveal Next Letter</button>
+      </div>
+
+      <div class="exam-paper">
+        <div class="exam-paper-title">Daniela: Skateboard champion</div>
+        
+        <p>
+          I've always <strong>(0) BEEN</strong> an outdoors kind of girl, and <strong>(9)</strong>
+          <input type="text" class="gap-input" id="q9" placeholder="[ 9 ]" autocomplete="off">
+          a kid, I'd get up to all sorts of stuff with my friends – climbing trees and messing about in the woods. As we got older, my friends started doing other things 
+          <strong>(10)</strong>
+          <input type="text" class="gap-input" id="q10" placeholder="[ 10 ]" autocomplete="off">
+          shopping and listening to music, but I still loved being outside and needed a new challenge.
+        </p>
+
+        <p style="margin-top: 14px;">
+          <strong>(11)</strong>
+          <input type="text" class="gap-input" id="q11" placeholder="[ 11 ]" autocomplete="off">
+          was my brother who first got me 
+          <strong>(12)</strong>
+          <input type="text" class="gap-input" id="q12" placeholder="[ 12 ]" autocomplete="off">
+          skateboarding. I'd seen him practising on his board hour after hour, and to 
+          <strong>(13)</strong>
+          <input type="text" class="gap-input" id="q13" placeholder="[ 13 ]" autocomplete="off">
+          honest, I used to think it was uncool. But when he showed me some amazing tricks he could do one day, I had to give it a go.
+        </p>
+
+        <p style="margin-top: 14px;">
+          I've got a competitive streak, so I watched loads of skateboarding clips online and got out on my board whenever I could – even 
+          <strong>(14)</strong>
+          <input type="text" class="gap-input" id="q14" placeholder="[ 14 ]" autocomplete="off">
+          it was dark – in order to compete 
+          <strong>(15)</strong>
+          <input type="text" class="gap-input" id="q15" placeholder="[ 15 ]" autocomplete="off">
+          my brother. It obviously paid 
+          <strong>(16)</strong>
+          <input type="text" class="gap-input" id="q16" placeholder="[ 16 ]" autocomplete="off">
+          because I beat him in a competition last month!
+        </p>
+      </div>
+
+      <div class="action-row" id="p2-action-row">
+        <button type="button" class="btn-primary" onclick="submitPart2()">
+          <span>🔍</span> Check Answers & Finalize Block ➔
+        </button>
+      </div>
+
+      <!-- FEEDBACK VIEW FOR PART 2 -->
+      <div class="feedback-stage" id="p2-feedback-stage">
+        <div class="celebration-box">
+          <div style="font-size: 36px;">🎉</div>
+          <div>
+            <h4 id="p2-celeb-title" style="color: var(--accent-gold); font-size: 17px; margin-bottom: 4px;">Block 05 Mastered!</h4>
+            <p id="p2-celeb-desc" style="font-size: 13.5px; color: #cbd5e1;">Review the grammatical and syntactic justifications below.</p>
+          </div>
+        </div>
+
+        <div class="feedback-grid" id="p2-feedback-list"></div>
+
+        <div class="action-row">
+          <button type="button" class="btn-primary" onclick="finishBlockAndReturn()">
+            <span>🏆</span> Return to Roadmap ➔
+          </button>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <div class="institutional-bottom">
+    <span>B2 First FCE Cambridge Trainer &bull; Block 05</span>
+    <span>All Rights Reserved &copy; by <strong>Dr. Jesús Miguel Lima E.</strong> &bull; JM ELT Solutions</span>
+  </div>
+
+  <script>
+    const STORAGE_KEY = "fce_trainer_session_v1";
+
+    let session = {
+      firstName: "Teacher",
+      birthYear: "",
+      coins: 100,
+      unlockedBlocks: [1, 2, 3, 4, 5]
+    };
+
+    const usedFiftyFiftyGaps = new Set();
+    const letterHintsState = {};
+
+    function loadSession() {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) {
+        try {
+          session = JSON.parse(raw);
+          if (!session.unlockedBlocks) session.unlockedBlocks = [1, 2, 3, 4, 5];
+          if (session.coins === undefined) session.coins = 100;
+        } catch(e) { console.error(e); }
+      }
+      document.getElementById("navCoins").innerText = session.coins;
+      document.getElementById("navTeacherName").innerText = session.firstName || "Teacher";
+    }
+
+    function saveSession() {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(session));
+      document.getElementById("navCoins").innerText = session.coins;
+    }
+
+    // =========================================================================
+    // PART 1 PEDAGOGICAL BREAKDOWN (Working parents)
+    // Keys: 1-A, 2-C, 3-D, 4-C, 5-B, 6-C, 7-D, 8-D
+    // =========================================================================
+    const PART1_DATA = {
+      1: {
+        correct: "A",
+        options: {
+          A: "bear: Idiomatic expression with modal negative: 'cannot bear to do something' (meaning unable to tolerate or accept doing something due to emotional pain or unwillingness).",
+          B: "decide: Collocates with 'cannot decide whether to', but not 'cannot decide to give it up' in this sense of painful emotional reluctance.",
+          C: "hope: Makes no logical sense with negative ability (*cannot hope to give it up means giving up is an impossible ambition).",
+          D: "expect: Requires an expected external occurrence; 'cannot expect to give it up' suggests external entitlement rather than internal reluctance."
+        }
+      },
+      2: {
+        correct: "C",
+        options: {
+          A: "reason: Countable noun that requires an article ('because of an economic reason') or plural ('economic reasons'); cannot stand bare in the singular.",
+          B: "duty: Refers to moral or legal obligations, not the financial pressure of earning a living.",
+          C: "necessity: Fixed uncountable collocation: 'economic necessity' (the unavoidable state of needing money to survive/live).",
+          D: "task: Countable noun referring to a specific job or piece of work; cannot be used bare as an uncountable cause."
+        }
+      },
+      3: {
+        correct: "D",
+        options: {
+          A: "refers: Requires 'it' to refer back to a specific text or subject, not the impersonal introductory idiom (*when it refers to is ungrammatical here).",
+          B: "concerns: Directly transitive verb that takes an immediate object (*when it concerns choosing, not when it concerns to choosing).",
+          C: "turns: 'Turns to' means directing attention or converting into, not introducing a topic.",
+          D: "comes: Part of the fixed idiomatic transition phrase: 'when it comes to + -ing/noun' (used to introduce a relevant topic or specific matter)."
+        }
+      },
+      4: {
+        correct: "C",
+        options: {
+          A: "of: Preposition of possession/origin; '*neighbour of the street' is completely unidiomatic for spatial location.",
+          B: "opposite: Would require no article or 'the street' directly as a preposition, but here it requires crossing the road to reach the house.",
+          C: "across: Spatial preposition meaning on the other side of a road or street: 'neighbour across the street'.",
+          D: "next to: Means beside; a neighbour is next door or next to the house, but not '*next to the street' to indicate facing on the other side."
+        }
+      },
+      5: {
+        correct: "B",
+        options: {
+          A: "way: Used in 'no way' (meaning impossible), but cannot combine with 'how' (*no way how good is ungrammatical).",
+          B: "matter: Fixed concessive discourse marker: 'no matter how + adjective' (meaning regardless of how good the childcare is).",
+          C: "surprise: Used in 'no surprise that...', which is a declarative formula, not an adverbial concessive with 'how'.",
+          D: "exception: Used in 'with no exception', which does not combine with 'how + adjective'."
+        }
+      },
+      6: {
+        correct: "C",
+        options: {
+          A: "people: Redundant and unidiomatic; we say 'family members', not '*family people'.",
+          B: "adults: Refers to age maturity, but does not form the standard lexical unit for relatives.",
+          C: "members: Precise collocation for the constituent individuals of a household or kinship unit: 'family members'.",
+          D: "grown-ups: Informal/childish register for adults; completely out of place in formal child psychology prose."
+        }
+      },
+      7: {
+        correct: "D",
+        options: {
+          A: "little: Negative quantifier meaning hardly any time, contradicting the advice to help the child settle in.",
+          B: "no: Negative determiner meaning zero time, which is contradictory to the recommendation.",
+          C: "lots: Requires the preposition 'of' before a noun (*lots time is ungrammatical).",
+          D: "plenty of: Standard quantifier meaning more than enough / an ample amount: 'allow plenty of time to help their child'."
+        }
+      },
+      8: {
+        correct: "D",
+        options: {
+          A: "make: Collocates as 'make the best of a bad situation' (cope with disadvantage), which is not the meaning of striving for someone's welfare.",
+          B: "give: Collocates with an indirect object ('give their children the best'), but cannot take 'for' in this pattern (*give the best for).",
+          C: "have: Stative verb of possession, not an active striving action.",
+          D: "do: Fixed idiomatic collocation with benefactive 'for': 'do the best for someone' (to act in the most advantageous and supportive way possible)."
+        }
+      }
+    };
+
+    // =========================================================================
+    // PART 2 STRUCTURAL BREAKDOWN (Daniela: Skateboard champion)
+    // Keys: 9-as, 10-like, 11-it, 12-into, 13-be, 14-when/if, 15-with/against, 16-off
+    // =========================================================================
+    const PART2_DATA = {
+      9: { 
+        accepted: ["AS"], 
+        explanation: "Preposition of role or temporal stage: 'and as a kid, I'd get up to...' (meaning during the time when I was a child)." 
+      },
+      10: { 
+        accepted: ["LIKE"], 
+        explanation: "Preposition of exemplification: Used to give examples of leisure activities: 'other things like shopping and listening to music'." 
+      },
+      11: { 
+        accepted: ["IT"], 
+        explanation: "Cleft sentence dummy subject: 'It was my brother who first got me...' (used to place emphasis on 'my brother')." 
+      },
+      12: { 
+        accepted: ["INTO"], 
+        explanation: "Idiomatic phrasal pattern: 'get someone into something' (to introduce someone to an activity or cause them to become interested/involved in it)." 
+      },
+      13: { 
+        accepted: ["BE"], 
+        explanation: "Fixed parenthetical infinitive idiom: 'to be honest' (used to indicate candid, sincere expression of opinion)." 
+      },
+      14: { 
+        accepted: ["WHEN", "IF"], 
+        explanation: "Temporal / conditional subordinating conjunction: 'even when it was dark' or 'even if it was dark' (indicating extreme or adverse conditions)." 
+      },
+      15: { 
+        accepted: ["WITH", "AGAINST"], 
+        explanation: "Dependent preposition of rivalry: The verb 'compete' naturally takes 'with' or 'against' someone ('in order to compete with / against my brother')." 
+      },
+      16: { 
+        accepted: ["OFF"], 
+        explanation: "Phrasal verb of successful outcome: 'paid off' (from 'pay off', meaning to yield good results or reward persistent effort)." 
+      }
+    };
+
+    function executeFiftyFifty() {
+      const selectTarget = document.getElementById("p1-target-gap");
+      const gapId = selectTarget.value;
+
+      if (!gapId) {
+        alert("Please select a gap from the dropdown first.");
+        return;
+      }
+
+      if (usedFiftyFiftyGaps.has(gapId)) {
+        alert(`50/50 has already been used on Gap ${gapId}.`);
+        return;
+      }
+
+      if (session.coins < 20) {
+        alert("Not enough coins! You need 20 coins for the 50/50 lifeline.");
+        return;
+      }
+
+      const selectElement = document.getElementById("q" + gapId);
+      const correctOpt = PART1_DATA[gapId].correct;
+      const distractors = ["A", "B", "C", "D"].filter(letter => letter !== correctOpt);
+      const toRemove = distractors.slice(0, 2);
+
+      Array.from(selectElement.options).forEach(opt => {
+        if (toRemove.includes(opt.value)) {
+          opt.disabled = true;
+          opt.text = opt.text + " ❌ [Eliminated]";
+        }
+      });
+
+      session.coins -= 20;
+      saveSession();
+      usedFiftyFiftyGaps.add(gapId);
+
+      const optionInMenu = selectTarget.querySelector(`option[value="${gapId}"]`);
+      if (optionInMenu) {
+        optionInMenu.disabled = true;
+        optionInMenu.text = `Gap ${gapId} (Used ✓)`;
+      }
+      selectTarget.value = "";
+
+      alert(`50/50 activated for Gap ${gapId}! Two incorrect options were eliminated.`);
+    }
+
+    function executeLetterHint() {
+      const selectTarget = document.getElementById("p2-target-gap");
+      const gapId = selectTarget.value;
+
+      if (!gapId) {
+        alert("Please select a gap from the dropdown first.");
+        return;
+      }
+
+      const cost = 10;
+      if (session.coins < cost) {
+        alert(`Not enough coins! You need ${cost} coins to reveal a letter.`);
+        return;
+      }
+
+      const targetWord = PART2_DATA[gapId].accepted[0];
+      const currentStep = letterHintsState[gapId] || 0;
+      const nextStep = currentStep + 1;
+
+      if (nextStep > targetWord.length) {
+        alert("All letters for this word have already been revealed!");
+        return;
+      }
+
+      const inputElement = document.getElementById("q" + gapId);
+      inputElement.value = targetWord.substring(0, nextStep);
+
+      letterHintsState[gapId] = nextStep;
+      session.coins -= cost;
+      saveSession();
+
+      if (nextStep >= targetWord.length) {
+        const optionInMenu = selectTarget.querySelector(`option[value="${gapId}"]`);
+        if (optionInMenu) {
+          optionInMenu.disabled = true;
+          optionInMenu.text = `Gap ${gapId} (Fully Revealed ✓)`;
+        }
+        selectTarget.value = "";
+        alert(`Word fully revealed for Gap ${gapId}!`);
+      } else {
+        alert(`Hint added for Gap ${gapId}: "${inputElement.value}"`);
+      }
+    }
+
+    function submitPart1() {
+      for (let i = 1; i <= 8; i++) {
+        if (!document.getElementById("q" + i).value) {
+          alert(`Please select an answer for Gap [${i}] before continuing.`);
+          return;
+        }
+      }
+
+      let score = 0;
+      const listContainer = document.getElementById("p1-feedback-list");
+      listContainer.innerHTML = "";
+
+      for (let i = 1; i <= 8; i++) {
+        const userChoice = document.getElementById("q" + i).value;
+        const correctChoice = PART1_DATA[i].correct;
+        const isPass = (userChoice === correctChoice);
+
+        if (isPass) {
+          score++;
+          session.coins += 5;
+        }
+
+        const card = document.createElement("div");
+        card.className = `item-card ${isPass ? 'correct' : 'incorrect'}`;
+        card.innerHTML = `
+          <div class="item-card-header">
+            <span class="item-number">QUESTION (GAP) ${i}</span>
+            <span class="item-badge ${isPass ? 'badge-pass' : 'badge-fail'}">
+              ${isPass ? 'CORRECT (+5 COINS)' : 'INCORRECT'}
+            </span>
+          </div>
+          <div style="font-size: 13.5px; margin-bottom: 6px;">
+            Your Choice: <strong>${userChoice}</strong> | Cambridge Key: <strong style="color:var(--accent-gold);">${correctChoice}</strong>
+          </div>
+          <div class="item-explanation">
+            ${isPass 
+              ? `<strong>Linguistic Rule:</strong> ${PART1_DATA[i].options[correctChoice]}`
+              : `<strong>Why ${userChoice} fails:</strong> ${PART1_DATA[i].options[userChoice]}<br><br>
+                 <strong>Why ${correctChoice} is correct:</strong> ${PART1_DATA[i].options[correctChoice]}`
+            }
+          </div>
+        `;
+        listContainer.appendChild(card);
+      }
+
+      saveSession();
+
+      const title = document.getElementById("p1-celeb-title");
+      const desc = document.getElementById("p1-celeb-desc");
+      if (score >= 7) {
+        title.innerText = `Outstanding, Teacher ${session.firstName || ''}! (${score}/8)`;
+        desc.innerText = "Exceptional collocational and syntactic mastery.";
+      } else {
+        title.innerText = `Analysis Ready, Teacher ${session.firstName || ''}! (${score}/8)`;
+        desc.innerText = "Carefully examine the linguistic feedback in each card below.";
+      }
+
+      document.getElementById("p1-action-row").style.display = "none";
+      document.getElementById("p1-feedback-stage").classList.add("active");
+      document.getElementById("p1-feedback-stage").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function transitionToPart2() {
+      document.getElementById("part1-container").classList.remove("active");
+      document.getElementById("part2-container").classList.add("active");
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function submitPart2() {
+      for (let i = 9; i <= 16; i++) {
+        if (!document.getElementById("q" + i).value.trim()) {
+          alert(`Please complete Gap [${i}] before continuing.`);
+          return;
+        }
+      }
+
+      let score = 0;
+      const listContainer = document.getElementById("p2-feedback-list");
+      listContainer.innerHTML = "";
+
+      for (let i = 9; i <= 16; i++) {
+        const userText = document.getElementById("q" + i).value.trim().toUpperCase();
+        const data = PART2_DATA[i];
+        const isPass = data.accepted.includes(userText);
+
+        if (isPass) {
+          score++;
+          session.coins += 5;
+        }
+
+        const card = document.createElement("div");
+        card.className = `item-card ${isPass ? 'correct' : 'incorrect'}`;
+        card.innerHTML = `
+          <div class="item-card-header">
+            <span class="item-number">QUESTION (GAP) ${i}</span>
+            <span class="item-badge ${isPass ? 'badge-pass' : 'badge-fail'}">
+              ${isPass ? 'CORRECT (+5 COINS)' : 'INCORRECT'}
+            </span>
+          </div>
+          <div style="font-size: 13.5px; margin-bottom: 6px;">
+            Your Answer: <strong>${userText}</strong> | Official Cambridge Key(s): <strong style="color:var(--accent-gold);">${data.accepted.join(" / ")}</strong>
+          </div>
+          <div class="item-explanation">
+            <strong>Grammar & Syntax Rule:</strong> ${data.explanation}
+          </div>
+        `;
+        listContainer.appendChild(card);
+      }
+
+      // Unlock Block 6 in progression
+      if (!session.unlockedBlocks.includes(6)) {
+        session.unlockedBlocks.push(6);
+      }
+      saveSession();
+
+      const title = document.getElementById("p2-celeb-title");
+      const desc = document.getElementById("p2-celeb-desc");
+      if (score >= 7) {
+        title.innerText = `Block 05 Mastered, Teacher ${session.firstName || ''}! (${score}/8)`;
+        desc.innerText = "Block 06 has been unlocked in your roadmap.";
+      } else {
+        title.innerText = `Block 05 Completed, Teacher ${session.firstName || ''}! (${score}/8)`;
+        desc.innerText = "Review the structural rules above. Block 06 is now accessible.";
+      }
+
+      document.getElementById("p2-action-row").style.display = "none";
+      document.getElementById("p2-feedback-stage").classList.add("active");
+      document.getElementById("p2-feedback-stage").scrollIntoView({ behavior: 'smooth' });
+    }
+
+    function finishBlockAndReturn() {
+      window.location.href = "./index.html";
+    }
+
+    loadSession();
+  </script>
+</body>
+</html>
